@@ -1,0 +1,42 @@
+POWERHOUSE BENEFITS SIMULATOR - TECHNICAL QA
+20 September 2026
+
+Current build changes
+- Replaced the header branding image with the newly supplied DWP logo file.
+- Logo CSS now preserves the image's full natural aspect ratio with object-fit: contain; there is no app-side cropping.
+- Removed firebase.json and all Firebase deployment instructions.
+- Render is now the documented hosting route.
+- Practice answers remain session-memory only; no learner data is saved or transmitted.
+- Generic year display now uses the device's current year automatically.
+- Benefit-rate display is date-aware: once the configured rate period expires, the learner-facing home card shows "Update required" rather than relabelling old figures as a new year.
+- The Rates & sources page continues to show the actual configured rate year so staff can see exactly what needs updating.
+- Removed the hard-coded "2026/27" Carer's Allowance note; it now reads the configured rate year from benefits-data.js.
+- Service worker changed to network-first so new Render deployments are picked up when online without changing a dated cache name every year.
+
+Earlier technical fixes retained
+- Removed all localStorage/sessionStorage persistence for learner answers.
+- Manifest/service-worker/install features activate only when the app is served over HTTP/HTTPS.
+- Directly opening index.html from a folder does not attempt to use PWA features.
+- Reset button resets the current training session.
+
+Interaction checks retained from the previous full test pass
+- Home screen and benefit cards render.
+- Main navigation: Home, Find support, Practice applications, What you need, Rates & sources.
+- Find support form submits and result buttons open the correct application.
+- Universal Credit: all steps, back, result calculator, finish and exit.
+- PIP: all steps, activity selections, back, result calculator and exit.
+- Carer's Allowance form and result.
+- New Style ESA form and result.
+- Housing Benefit form, result and dynamic Universal Credit link.
+- Council Tax Reduction form and result.
+- Access to Work form and result.
+- Attendance Allowance form, result and dynamic PIP link.
+- Demo profile button.
+- Reset training answers button.
+- No localStorage or sessionStorage API calls remain.
+
+Hosting
+- No Firebase, Firestore, authentication or database is required.
+- Render Static Site is suitable.
+- Recommended Render settings: blank build command, publish directory .
+- HTTPS hosting enables installable/offline PWA features.

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#00a9a2">
+  <meta name="description" content="West SILC Powerhouse benefits application training simulator.">
+  <title>Benefits Application Simulator | Powerhouse Training</title>
+  <link rel="icon" href="assets/app-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="brand-wrap">
+      <img class="dwp-brand" src="assets/dwp-brand.png" alt="Department for Work and Pensions branding used for training reference">
+      <div class="brand-copy">
+        <div class="training-badge">TRAINING SIMULATOR</div>
+        <div class="brand-title">Benefits Application Practice</div>
+        <div class="brand-subtitle">West SILC Powerhouse</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="quiet-button" id="installButton" hidden>Install app</button>
+      <button class="quiet-button" data-nav="about">Rates & sources</button>
+    </div>
+  </header>
+
+  <div class="warning-strip" role="note">
+    <strong>Training only.</strong> This is not a real DWP or GOV.UK service. Do not enter real National Insurance numbers, bank details or medical records.
+  </div>
+
+  <div class="app-shell">
+    <nav class="side-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-nav="home"><span class="nav-icon">⌂</span><span>Home</span></button>
+      <button class="nav-item" data-nav="finder"><span class="nav-icon">?</span><span>Find support</span></button>
+      <button class="nav-item" data-nav="applications"><span class="nav-icon">▤</span><span>Practice applications</span></button>
+      <button class="nav-item" data-nav="checklist"><span class="nav-icon">✓</span><span>What you need</span></button>
+      <button class="nav-item" data-nav="about"><span class="nav-icon">i</span><span>Rates & sources</span></button>
+    </nav>
+
+    <main id="main" class="main-content" tabindex="-1">
+      <section class="view active" id="view-home">
+        <div class="hero-card">
+          <div>
+            <div class="eyebrow">Benefits training</div>
+            <h1>Learn how benefit applications work</h1>
+            <p class="hero-lead">Practise the questions you may be asked, see what evidence is usually needed, and get an indicative estimate using current training rates.</p>
+            <div class="hero-buttons">
+              <button class="primary-button" data-nav="finder">Start benefit checker</button>
+              <button class="secondary-button" data-nav="applications">Practise an application</button>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Rate year</span>
+            <strong id="rateYearHome">Checking…</strong>
+            <span id="rateStatusHome">Current training rates</span>
+          </div>
+        </div>
+
+        <div class="info-callout important">
+          <div class="callout-icon">!</div>
+          <div>
+            <strong>Living with parents does not automatically stop Universal Credit.</strong>
+            <p>It can affect housing support. A contribution towards food or household bills is not the same as having an eligible rent liability.</p>
+          </div>
+        </div>
+
+        <h2>Most relevant support to practise</h2>
+        <div class="benefit-grid" id="homeBenefitGrid"></div>
+
+        <div class="two-column">
+          <div class="panel">
+            <h2>What this app teaches</h2>
+            <ul class="tick-list">
+              <li>What personal information applications ask for</li>
+              <li>How education, work, savings and housing can affect entitlement</li>
+              <li>How PIP looks at day-to-day needs rather than diagnosis alone</li>
+              <li>What evidence and documents to prepare</li>
+              <li>Why benefit amounts can change when circumstances change</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h2>Safe training data</h2>
+            <p>Use fictional names and made-up details. Nothing is sent to DWP. Your practice answers are not saved. They are kept only for the current practice session and reset when the page is refreshed or closed.</p>
+            <button class="secondary-button" id="loadDemoProfile">Load a fictional practice profile</button>
+            <button class="text-button danger-text" id="clearAllData">Reset training answers</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-finder">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Guided checker</div>
+            <h1>Which support might be relevant?</h1>
+            <p>Answer a short set of questions. This is a teaching guide, not an official eligibility decision.</p>
+          </div>
+        </div>
+
+        <form id="finderForm" class="form-card">
+          <div class="form-grid two">
+            <label class="field"><span>Age</span><input type="number" id="finderAge" min="16" max="100" value="18"></label>
+            <label class="field"><span>Where do you live?</span>
+              <select id="finderHome">
+                <option value="parents">With parent(s) or guardian(s)</option>
+                <option value="rent">I rent my own home / room</option>
+                <option value="supported">Supported, sheltered or temporary accommodation</option>
+                <option value="owner">I own my home</option>
+              </select>
+            </label>
+            <label class="field"><span>Education</span>
+              <select id="finderEducation">
+                <option value="full">Full-time education</option>
+                <option value="part">Part-time education</option>
+                <option value="none">Not in education</option>
+              </select>
+            </label>
+            <label class="field"><span>Work situation</span>
+              <select id="finderWork">
+                <option value="none">Not working</option>
+                <option value="low">Working with a low income</option>
+                <option value="paid">In paid work</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset class="question-box">
+            <legend>Health and disability</legend>
+            <label class="choice"><input type="checkbox" id="finderDisability"><span>I have a long-term health condition, disability or learning disability</span></label>
+            <label class="choice"><input type="checkbox" id="finderDaily"><span>I need help, prompting, supervision or adaptations with everyday activities</span></label>
+            <label class="choice"><input type="checkbox" id="finderMobility"><span>I need help with journeys or moving around</span></label>
+          </fieldset>
+
+          <fieldset class="question-box">
+            <legend>Caring and household</legend>
+            <label class="choice"><input type="checkbox" id="finderCarer"><span>I care for someone for around 35 hours a week or more</span></label>
+            <label class="choice"><input type="checkbox" id="finderChild"><span>I am responsible for a child</span></label>
+            <label class="choice"><input type="checkbox" id="finderNoParents"><span>I am under 21 and do not have parental support</span></label>
+          </fieldset>
+
+          <button class="primary-button" type="submit">Show possible support</button>
+        </form>
+
+        <div id="finderResults" class="results-stack" aria-live="polite"></div>
+      </section>
+
+      <section class="view" id="view-applications">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Practice forms</div>
+            <h1>Choose an application</h1>
+            <p>Each form uses fictional training data and explains why the questions matter.</p>
+          </div>
+        </div>
+        <div class="benefit-grid" id="applicationGrid"></div>
+      </section>
+
+      <section class="view" id="view-uc">
+        <div id="ucApp"></div>
+      </section>
+
+      <section class="view" id="view-pip">
+        <div id="pipApp"></div>
+      </section>
+
+      <section class="view" id="view-carers">
+        <div id="carersApp"></div>
+      </section>
+
+      <section class="view" id="view-esa">
+        <div id="esaApp"></div>
+      </section>
+
+      <section class="view" id="view-housing">
+        <div id="housingApp"></div>
+      </section>
+
+      <section class="view" id="view-council">
+        <div id="councilApp"></div>
+      </section>
+
+      <section class="view" id="view-atw">
+        <div id="atwApp"></div>
+      </section>
+
+      <section class="view" id="view-attendance">
+        <div id="attendanceApp"></div>
+      </section>
+
+      <section class="view" id="view-checklist">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Preparation</div>
+            <h1>What you may need</h1>
+            <p>Applications differ, but these are common pieces of information to have ready.</p>
+          </div>
+        </div>
+        <div class="checklist-grid">
+          <div class="check-card"><span class="check-icon">ID</span><h3>Identity</h3><p>Name, date of birth, address and proof of identity.</p></div>
+          <div class="check-card"><span class="check-icon">NI</span><h3>National Insurance</h3><p>Your National Insurance number, if you have one.</p></div>
+          <div class="check-card"><span class="check-icon">£</span><h3>Money</h3><p>Income, payslips, savings, pensions and other benefits.</p></div>
+          <div class="check-card"><span class="check-icon">⌂</span><h3>Housing</h3><p>Tenancy agreement, rent amount, landlord details and service charges.</p></div>
+          <div class="check-card"><span class="check-icon">+</span><h3>Health</h3><p>Fit notes, professional reports and examples of how your condition affects daily life.</p></div>
+          <div class="check-card"><span class="check-icon">▣</span><h3>Bank details</h3><p>Account name, sort code and account number for real claims. Use fictional details in this simulator.</p></div>
+          <div class="check-card"><span class="check-icon">✉</span><h3>Contact details</h3><p>Phone, email and any communication adjustments you need.</p></div>
+          <div class="check-card"><span class="check-icon">?</span><h3>Support</h3><p>Details of an appointee, advocate or trusted person if someone helps you manage your claim.</p></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-about">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">Maintenance</div>
+            <h1>Rates, sources and future-proofing</h1>
+            <p>This app keeps benefit rates in one data file so they can be updated without rebuilding the whole interface.</p>
+          </div>
+        </div>
+
+        <div id="rateWarning" class="info-callout"></div>
+
+        <div class="two-column">
+          <div class="panel">
+            <h2>Current training data</h2>
+            <dl class="data-list">
+              <div><dt>Rate year</dt><dd id="aboutRateYear"></dd></div>
+              <div><dt>Valid from</dt><dd id="aboutValidFrom"></dd></div>
+              <div><dt>Valid to</dt><dd id="aboutValidTo"></dd></div>
+              <div><dt>Last reviewed</dt><dd id="aboutReviewed"></dd></div>
+              <div><dt>Data file</dt><dd><code>benefits-data.js</code></dd></div>
+            </dl>
+          </div>
+          <div class="panel">
+            <h2>Important limitation</h2>
+            <p>The calculators give an indicative training estimate only. Real entitlement can depend on immigration status, exact education rules, earnings periods, housing rules, deductions, benefit caps, previous claims, transitional protection and evidence.</p>
+            <p>For a real claim, use GOV.UK or an approved benefits calculator/adviser.</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Official sources used</h2>
+          <div id="sourceList" class="source-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span>West SILC Powerhouse — training simulator <span id="footerYear"></span></span>
+    <span>Not an official Department for Work and Pensions service</span>
+  </footer>
+
+  <script src="benefits-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
