@@ -41,6 +41,7 @@
     const main = $('#main');
     if (main) main.focus({preventScroll:true});
     window.scrollTo({top:0, behavior:'smooth'});
+    if (view === 'wca' && window.PowerhouseWCA) window.PowerhouseWCA.show();
     if (view === 'uc') renderUc();
     if (view === 'pip') renderPip();
     if (view === 'carers') renderCarers();
@@ -494,6 +495,19 @@
     }
   }
 
+  window.portalOpen = nav;
+  window.portalPrefillBenefits = function(a){
+    if (!a) return;
+    if (a.age16 === 'yes') $('#finderAge').value = 17;
+    else if (a.age16 === 'no') $('#finderAge').value = 18;
+    if (a.education === 'yes') $('#finderEducation').value = 'full';
+    if (a.education === 'no') $('#finderEducation').value = 'none';
+    if (a.condition === 'yes') $('#finderDisability').checked = true;
+    if (a.dailyhelp === 'yes') $('#finderDaily').checked = true;
+    if (a.journeys === 'yes' || a.move === 'yes') $('#finderMobility').checked = true;
+    nav('finder');
+    $('#finderForm').requestSubmit();
+  };
   enableHostedAppFeatures();
   renderStatic();
 })();

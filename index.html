@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#00a9a2">
+  <meta name="theme-color" content="#00675f">
   <meta name="description" content="West SILC Powerhouse benefits application training simulator.">
-  <title>Benefits Application Simulator | Powerhouse Training</title>
+  <title>Benefits & Work Capability Portal | West SILC Powerhouse</title>
   <link rel="icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -17,13 +17,13 @@
       <img class="dwp-brand" src="assets/dwp-brand.png" alt="Department for Work and Pensions branding used for training reference">
       <div class="brand-copy">
         <div class="training-badge">TRAINING SIMULATOR</div>
-        <div class="brand-title">Benefits Application Practice</div>
-        <div class="brand-subtitle">West SILC Powerhouse</div>
+        <div class="brand-title">Benefits & Work Capability Portal</div>
+        <div class="brand-subtitle">West SILC Powerhouse · Training Simulator</div>
       </div>
     </div>
     <div class="header-actions">
       <button class="quiet-button" id="installButton" hidden>Install app</button>
-      <button class="quiet-button" data-nav="about">Rates & sources</button>
+      <button class="quiet-button" data-nav="about">Guidance & sources</button>
     </div>
   </header>
 
@@ -33,63 +33,51 @@
 
   <div class="app-shell">
     <nav class="side-nav" aria-label="Main navigation">
-      <button class="nav-item active" data-nav="home"><span class="nav-icon">⌂</span><span>Home</span></button>
-      <button class="nav-item" data-nav="finder"><span class="nav-icon">?</span><span>Find support</span></button>
+      <button class="nav-item active" data-nav="home"><span class="nav-icon">▦</span><span>Dashboard</span></button>
+      <button class="nav-item" data-nav="wca"><span class="nav-icon">☑</span><span>Work Capability Assessment</span></button>
+      <button class="nav-item" data-nav="finder"><span class="nav-icon">⌕</span><span>Benefit checker</span></button>
       <button class="nav-item" data-nav="applications"><span class="nav-icon">▤</span><span>Practice applications</span></button>
-      <button class="nav-item" data-nav="checklist"><span class="nav-icon">✓</span><span>What you need</span></button>
-      <button class="nav-item" data-nav="about"><span class="nav-icon">i</span><span>Rates & sources</span></button>
+      <button class="nav-item" data-nav="checklist"><span class="nav-icon">☷</span><span>What you need</span></button>
+      <button class="nav-item" data-nav="guidance"><span class="nav-icon">ⓘ</span><span>Work &amp; policy guidance</span></button>
+      <button class="nav-item" data-nav="about"><span class="nav-icon">?</span><span>Help &amp; sources</span></button>
     </nav>
 
     <main id="main" class="main-content" tabindex="-1">
       <section class="view active" id="view-home">
-        <div class="hero-card">
-          <div>
-            <div class="eyebrow">Benefits training</div>
-            <h1>Learn how benefit applications work</h1>
-            <p class="hero-lead">Practise the questions you may be asked, see what evidence is usually needed, and get an indicative estimate using current training rates.</p>
-            <div class="hero-buttons">
-              <button class="primary-button" data-nav="finder">Start benefit checker</button>
-              <button class="secondary-button" data-nav="applications">Practise an application</button>
+        <div class="dashboard-grid">
+          <div class="dashboard-primary">
+            <div class="hero-card portal-hero">
+              <div class="hero-content">
+                <div class="hero-kicker">YOUR FUTURE · YOUR SUPPORT</div>
+                <h1>Check what support you may need</h1>
+                <p class="hero-lead">A training portal for young people aged 16–19 to learn how the Work Capability Assessment (WCA) works, what benefits might be available, and what information you may need to provide.</p>
+                <div class="hero-buttons"><button class="primary-button" data-nav="wca">Start WCA questions <span aria-hidden="true">→</span></button><button class="secondary-button" data-nav="finder">Explore benefits <span aria-hidden="true">→</span></button></div>
+              </div>
+              <span class="hero-training">◈ Training only <small>Not an official eligibility decision</small></span>
+            </div>
+            <div class="portal-feature-grid">
+              <article class="portal-feature"><div class="feature-head">☑ <strong>Work Capability Assessment</strong></div><div class="feature-body"><p>Answer easy-to-read questions with Yes, No or I don’t know. Learn what support you may need.</p><button class="text-button" data-nav="wca">Start assessment →</button></div></article>
+              <article class="portal-feature"><div class="feature-head">▤ <strong>Benefits to explore</strong></div><div class="feature-body"><div class="pill-row"><span>Universal Credit</span><span>PIP</span><span>New Style ESA</span><span>Access to Work</span></div><button class="text-button" data-nav="finder">Check possible support →</button></div></article>
+              <article class="portal-feature"><div class="feature-head">ⓘ <strong>What to find out</strong></div><div class="feature-body"><p>Know what evidence to prepare: health reports, fit notes if needed, education, income and support needs.</p><button class="text-button" data-nav="checklist">View checklist →</button></div></article>
             </div>
           </div>
-          <div class="hero-stat">
-            <span class="hero-stat-label">Rate year</span>
-            <strong id="rateYearHome">Checking…</strong>
-            <span id="rateStatusHome">Current training rates</span>
-          </div>
+          <aside class="next-steps-panel"><div class="next-steps-head">⚑ &nbsp; Your next steps</div><div class="next-steps-body"><p>Use these steps to understand what support might help you.</p><div class="step-check">✓ <span><strong>Understand your health needs</strong><small>Think about what tasks you find difficult.</small></span></div><div class="step-check">✓ <span><strong>Answer WCA questions</strong><small>It is OK to select “I don’t know”.</small></span></div><div class="step-check">✓ <span><strong>Explore possible benefits</strong><small>Check age and education rules.</small></span></div><div class="step-check">✓ <span><strong>Talk about work and support</strong><small>Explore jobs and reasonable adjustments.</small></span></div><button class="secondary-button" data-nav="guidance">View current guidance ↗</button></div></aside>
         </div>
-
-        <div class="info-callout important">
-          <div class="callout-icon">!</div>
-          <div>
-            <strong>Living with parents does not automatically stop Universal Credit.</strong>
-            <p>It can affect housing support. A contribution towards food or household bills is not the same as having an eligible rent liability.</p>
-          </div>
-        </div>
-
-        <h2>Most relevant support to practise</h2>
-        <div class="benefit-grid" id="homeBenefitGrid"></div>
-
+        <div class="workflow-panel"><h2>⚙ How it works</h2><div class="workflow-grid"><div><b>1</b><span>Answer questions</span></div><div><b>2</b><span>Review your results</span></div><div><b>3</b><span>Explore benefits</span></div><div><b>4</b><span>Get next steps and help</span></div></div></div>
+        <div class="portal-guidance-strip"><strong>▤ &nbsp; Current guidance</strong><span>Rules and announced changes are separated from proposals still under review.</span><button class="text-button" data-nav="guidance">View guidance →</button></div>
+        <div class="legacy-benefits"><h2>Practice benefit applications</h2><p>These existing forms are retained so you can explore benefit questions after checking support needs.</p><div class="benefit-grid" id="homeBenefitGrid"></div></div>
         <div class="two-column">
-          <div class="panel">
-            <h2>What this app teaches</h2>
-            <ul class="tick-list">
-              <li>What personal information applications ask for</li>
-              <li>How education, work, savings and housing can affect entitlement</li>
-              <li>How PIP looks at day-to-day needs rather than diagnosis alone</li>
-              <li>What evidence and documents to prepare</li>
-              <li>Why benefit amounts can change when circumstances change</li>
-            </ul>
-          </div>
-          <div class="panel">
-            <h2>Safe training data</h2>
-            <p>Use fictional names and made-up details. Nothing is sent to DWP. Your practice answers are not saved. They are kept only for the current practice session and reset when the page is refreshed or closed.</p>
-            <button class="secondary-button" id="loadDemoProfile">Load a fictional practice profile</button>
-            <button class="text-button danger-text" id="clearAllData">Reset training answers</button>
-          </div>
+          <div class="panel"><h2>What this app teaches</h2><ul class="tick-list"><li>What personal information applications ask for</li><li>How education, work, savings and housing affect entitlement</li><li>How PIP looks at day-to-day needs rather than diagnosis alone</li><li>Why benefit amounts and circumstances can change</li></ul></div>
+          <div class="panel"><h2>Safe training practice</h2><p>Use fictional names and made-up details. Answers stay in your current browser session and reset on refresh.</p><button class="secondary-button" id="loadDemoProfile">Load a fictional practice profile</button><button class="text-button danger-text" id="clearAllData">Reset training answers</button><p class="small muted">Rate year: <strong id="rateYearHome">Checking…</strong> · <span id="rateStatusHome"></span></p></div>
         </div>
       </section>
-
+      <section class="view" id="view-wca"><div class="page-heading"><div><div class="eyebrow">Health, everyday life and work</div><h1>Work Capability Assessment practice</h1><p>Answer the training questions, then receive a personalised action plan. This is not the official WCA50 form and cannot decide your work capability.</p></div></div><div id="wcaApp"></div></section>
+      <section class="view" id="view-guidance"><div class="page-heading"><div><div class="eyebrow">Rules and changes · reviewed 16 November 2026</div><h1>Work, benefits and what may change</h1><p>Current rules are different from government announcements and independent recommendations.</p></div></div><div class="guidance-grid"><article class="panel"><span class="guidance-tag">CURRENT RULES</span><h2>Work Capability Assessment</h2><p>The DWP makes the formal decision. It can decide that a claimant is fit for work, has limited capability for work (LCW), or has limited capability for work and work-related activity (LCWRA). There is also a severe, lifelong health condition outcome.</p><p>A person with LCW or LCWRA can still choose to work if they are able. The decision affects Universal Credit responsibilities and possible extra amounts.</p><a href="https://www.gov.uk/health-conditions-disability-universal-credit/after-assessment" target="_blank" rel="noopener">Official WCA guidance ↗</a></article>
+        <article class="panel"><span class="guidance-tag">CURRENT RULES</span><h2>Age and education matter</h2><p>PIP can usually be claimed from age 16, if its conditions are met. Universal Credit normally starts from age 18, with specific exceptions for some 16–17-year-olds. Full-time education often restricts Universal Credit unless an exception applies.</p><p>For learners in full-time non-advanced education, seek individual advice rather than assuming a disability or fit note automatically permits a claim.</p><a href="https://www.gov.uk/universal-credit/eligibility" target="_blank" rel="noopener">Universal Credit eligibility ↗</a></article>
+        <article class="panel"><span class="guidance-tag">ANNOUNCED · NOT FOR EVERY LEARNER</span><h2>Youth Jobs Guarantee</h2><p>The government announced a nationwide expansion on 14 November 2026. Eligible 18–24-year-olds receiving Universal Credit and looking for work can be offered a fully-funded six-month job under the programme.</p><p>It does not automatically apply to every 16–19-year-old. Ask an adviser whether you meet the current scheme criteria.</p><a href="https://www.gov.uk/government/news/90000-young-people-furthest-from-work-to-be-given-guaranteed-job-no-matter-where-they-live" target="_blank" rel="noopener">Government announcement ↗</a></article>
+        <article class="panel"><span class="guidance-tag proposed">REVIEW PROPOSALS · NOT LAW</span><h2>The Milburn Review</h2><p>As at 16 November 2026, the final review is expected on 17 November. Discussion includes employment support, training, apprenticeships, incentives to hire young people and potential changes to benefit expectations.</p><p>Suggested changes, including possible consequences for refusing suitable support, must not be treated as existing law or applied to an individual claim without checking what has actually been adopted.</p><a href="https://www.gov.uk/government/publications/list-of-upcoming-research-publications/list-of-upcoming-research-publications" target="_blank" rel="noopener">Official research information ↗</a></article>
+        <article class="panel"><span class="guidance-tag">WORK SUPPORT</span><h2>Jobs and reasonable adjustments</h2><p>Some people can work with visual instructions, flexible breaks, accessible communication, a job coach or equipment. Access to Work may help eligible people with disability-related barriers to paid employment.</p><a href="https://www.gov.uk/access-to-work" target="_blank" rel="noopener">Access to Work ↗</a></article>
+        <article class="panel"><span class="guidance-tag">GET HELP</span><h2>Independent benefits advice</h2><p>Speak to a qualified adviser before making or changing a claim. A Work Capability Assessment is not the same as a PIP assessment.</p><a href="https://www.citizensadvice.org.uk/benefits/" target="_blank" rel="noopener">Citizens Advice ↗</a></article></div></section>
       <section class="view" id="view-finder">
         <div class="page-heading">
           <div>
@@ -253,5 +241,6 @@
 
   <script src="benefits-data.js"></script>
   <script src="app.js"></script>
+  <script src="wca.js"></script>
 </body>
 </html>

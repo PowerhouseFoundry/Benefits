@@ -1,10 +1,12 @@
-const CACHE = 'powerhouse-benefits-static-v3';
+const CACHE = 'powerhouse-portal-2026-11-v4';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
   './benefits-data.js',
   './app.js',
+  './wca.js',
+  './assets/portal-hero.png',
   './manifest.webmanifest',
   './assets/app-icon.png',
   './assets/dwp-brand.png'
